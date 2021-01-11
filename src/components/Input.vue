@@ -1,6 +1,6 @@
 <template>
-  <div class="input">
-    <div class="wrapper">
+  <div :class="$style.input">
+    <div :class="$style.wrapper">
       <input
         type="text"
         class="text-input"
@@ -10,25 +10,6 @@
   </div>
 </template>
 
-<style scoped>
-.input {
-  display: flex;
-  width: 100%;
-  border-bottom: 1px solid #a7a7a7;
-}
-
-.wrapper {
-  display: flex;
-  padding: 10px;
-  width: 100%;
-}
-
-.text-input {
-  font-family: "Raleway", sans-serif;
-  font-style: italic;
-  font-size: 18px;
-  border: 0;
-  outline: 0;
-  flex: 1;
-}
+<style lang="scss" module scoped>
+@import "../assets/styles.scss";
 </style>
