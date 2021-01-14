@@ -1,11 +1,37 @@
 <template>
-  <div><Task>New Task1</Task></div>
-  <div><Task>New Task2</Task></div>
-  <div><Task>New Task3</Task></div>
+  <div :class="$style.tasks">
+    <Task v-for="task of tasks" :key="task" :task="task.task" />
+  </div>
 </template>
 
-import Task from "./Task.vue"; export default { components: { Task } };
+<script>
+import Task from "./Task";
+export default {
+  data: () => ({
+    tasks: [
+      {
+        task: "New Task 1"
+      },
+      {
+        task: "New Task 2"
+      },
+      {
+        task: "New Task 3"
+      }
+    ]
+  }),
+  components: {
+    Task
+  }
+};
+</script>
 
 <style lang="scss" module scoped>
-@import "../assets/styles.scss";
+@import "../assets/variables.scss";
+.tasks {
+  display: block;
+  padding: 0.2rem 0;
+  border-bottom: 0.06rem solid $task-color;
+  font-size: 1.125rem;
+}
 </style>

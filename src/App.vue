@@ -26,5 +26,27 @@ export default {
 </script>
 
 <style lang="scss" module scoped>
-@import "./assets/styles.scss";
+@import "./assets/variables.scss";
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  font-size: 100%;
+}
+
+.page {
+  background-color: $main-color;
+  color: $box-color;
+  font-family: "Raleway", sans-serif;
+}
+
+.list {
+  margin: 0 auto;
+  height: auto;
+  width: 30vw;
+  height: auto;
+  line-height: 1.8;
+  background-color: $list-color;
+  box-shadow: 0 0.25rem 0.625rem #36363680;
+}
 </style>
