@@ -15,7 +15,6 @@
 </template>
 
 <style lang="scss" module scoped>
-@import "../assets/variables.scss";
 .footer {
   display: flex;
   align-items: center;

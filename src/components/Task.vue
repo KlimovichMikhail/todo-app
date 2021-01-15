@@ -16,7 +16,6 @@ export default {
 </script>
 
 <style lang="scss" module scoped>
-@import "../assets/variables.scss";
 .text-input {
   font-family: "Raleway", sans-serif;
   font-style: italic;

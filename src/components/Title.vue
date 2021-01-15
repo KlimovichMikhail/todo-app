@@ -3,7 +3,6 @@
 </template>
 
 <style lang="scss" module scoped>
-@import "../assets/variables.scss";
 .title {
   font-size: 6.25rem;
   text-align: center;

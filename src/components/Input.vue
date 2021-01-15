@@ -9,7 +9,6 @@
 </template>
 
 <style lang="scss" module scoped>
-@import "../assets/variables.scss";
 .input {
   display: flex;
   width: 100%;

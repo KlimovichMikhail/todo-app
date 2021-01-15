@@ -26,14 +26,6 @@ export default {
 </script>
 
 <style lang="scss" module scoped>
-@import "./assets/variables.scss";
-* {
-  padding: 0;
-  margin: 0;
-  border: 0;
-  font-size: 100%;
-}
-
 .page {
   background-color: $main-color;
   color: $box-color;

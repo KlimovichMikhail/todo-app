@@ -27,7 +27,6 @@ export default {
 </script>
 
 <style lang="scss" module scoped>
-@import "../assets/variables.scss";
 .tasks {
   display: block;
   padding: 0.2rem 0;
