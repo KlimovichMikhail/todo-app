@@ -4,9 +4,7 @@
       2 2 left
     </div>
     <span :class="$style.tabs">
-      <label :class="$style.tab">All</label>
-      <label :class="$style.tab">Active</label>
-      <label :class="$style.tab">Completed</label>
+      <Tab v-for="tab of tabs" :key="tab" :tab="tab.tab" />
     </span>
     <div>
       Clear completed
@@ -14,7 +12,28 @@
   </div>
 </template>
 
-<style lang="scss" module scoped>
+<script>
+import Tab from "./Tab";
+export default {
+  data: () => ({
+    tabs: [
+      {
+        tab: "All"
+      },
+      {
+        tab: "Active"
+      },
+      {
+        tab: "Completed"
+      }
+    ]
+  }),
+  components: {
+    Tab
+  }
+};
+</script>
+<style lang="scss" module>
 .footer {
   display: flex;
   align-items: center;
@@ -23,13 +42,5 @@
 }
 .tabs {
   display: flex;
-}
-.tab {
-  margin: 0 0.5rem;
-  padding: 0.25rem;
-}
-.tab:hover {
-  border: 1px solid $tab-color;
-  border-radius: 0.25rem;
 }
 </style>

@@ -1,10 +1,6 @@
 <template>
   <div :class="$style.input">
-    <input
-      type="text"
-      class="text-input"
-      placeholder="- What needs to be done?"
-    />
+    <input type="text" placeholder="- What needs to be done?" />
   </div>
 </template>
 
