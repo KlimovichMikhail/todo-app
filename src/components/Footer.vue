@@ -1,32 +1,32 @@
 <template>
-  <div class="footer">
-    <div class="count">
+  <div :class="$style.footer">
+    <div>
       2 2 left
     </div>
-    <span class="tabs">
-      <label class="tab">All</label>
-      <label class="tab">Active</label>
-      <label class="tab">Completed</label>
-    </span>
+    <Tabs :tabs="tabs" />
+    <div>
+      Clear completed
+    </div>
   </div>
 </template>
 
-<style>
+<script>
+import Tabs from "./Tabs";
+export default {
+  data: () => ({
+    tabs: ["All", "Active", "Completed"]
+  }),
+  components: {
+    Tabs
+  }
+};
+</script>
+
+<style lang="scss" module>
 .footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 7px;
-}
-.tabs {
-  display: flex;
-}
-.tab {
-  margin: 0 7px;
-  padding: 3px;
-}
-.tab:hover {
-  border: 1px solid #afafad;
-  border-radius: 3px;
+  padding: 0.5rem;
 }
 </style>
