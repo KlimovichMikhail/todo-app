@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<style lang="scss" module scoped>
+<style lang="scss" module>
 .input {
   display: flex;
   width: 100%;

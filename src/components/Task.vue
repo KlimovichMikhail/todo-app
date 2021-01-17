@@ -1,5 +1,5 @@
 <template>
-  <label :class="$style.tasks">
+  <label>
     <input class="$style.text-input" type="checkbox" />
     <span>{{ task }}</span
     ><br />
@@ -15,7 +15,7 @@ export default {
 };
 </script>
 
-<style lang="scss" module scoped>
+<style lang="scss" module>
 .text-input {
   font-family: "Raleway", sans-serif;
   font-style: italic;

@@ -2,7 +2,7 @@
   <H1 :class="$style.title">todos</H1>
 </template>
 
-<style lang="scss" module scoped>
+<style lang="scss" module>
 .title {
   font-size: 6.25rem;
   text-align: center;

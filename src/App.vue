@@ -25,7 +25,7 @@ export default {
 };
 </script>
 
-<style lang="scss" module scoped>
+<style lang="scss" module>
 .page {
   background-color: $main-color;
   color: $box-color;

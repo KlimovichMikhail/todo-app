@@ -1,11 +1,9 @@
 <template>
   <div :class="$style.footer">
-    <div :class="$style.count">
+    <div>
       2 2 left
     </div>
-    <span :class="$style.tabs">
-      <Tab v-for="tab of tabs" :key="tab" :tab="tab.tab" />
-    </span>
+    <Tabs :tabs="tabs" />
     <div>
       Clear completed
     </div>
@@ -13,34 +11,22 @@
 </template>
 
 <script>
-import Tab from "./Tab";
+import Tabs from "./Tabs";
 export default {
   data: () => ({
-    tabs: [
-      {
-        tab: "All"
-      },
-      {
-        tab: "Active"
-      },
-      {
-        tab: "Completed"
-      }
-    ]
+    tabs: ["All", "Active", "Completed"]
   }),
   components: {
-    Tab
+    Tabs
   }
 };
 </script>
+
 <style lang="scss" module>
 .footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem;
-}
-.tabs {
-  display: flex;
 }
 </style>

@@ -1,7 +1,6 @@
 <template>
   <label :class="$style.tab">
-    <span>{{ tab }}</span
-    ><br />
+    <span>{{ tab }}</span>
   </label>
 </template>
 
@@ -14,7 +13,7 @@ export default {
 };
 </script>
 
-<style lang="scss" module scoped>
+<style lang="scss" module>
 .tab {
   margin: 0 0.5rem;
   padding: 0.25rem;

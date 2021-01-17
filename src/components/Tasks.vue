@@ -26,7 +26,7 @@ export default {
 };
 </script>
 
-<style lang="scss" module scoped>
+<style lang="scss" module>
 .tasks {
   display: block;
   padding: 0.2rem 0;
