@@ -1,5 +1,6 @@
 <template>
   <label :class="$style.tab">
+    <input type="radio" name="filter" checked />
     <span>{{ tab }}</span>
   </label>
 </template>
@@ -17,9 +18,13 @@ export default {
 .tab {
   margin: 0 0.5rem;
   padding: 0.25rem;
+
+  input[type="radio"]:checked + span {
+    padding: 0.2rem;
+    border: 1px solid #ebd8d7;
+  }
 }
-.tab:hover {
-  border: 1px solid $tab-color;
-  border-radius: 0.25rem;
+input[type="radio"] {
+  display: none;
 }
 </style>

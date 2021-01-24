@@ -1,11 +1,13 @@
 <template>
-  <div :class="$style.page">
+  <div>
     <Title />
-    <div :class="$style.list">
+    <div :class="$style.firstList">
       <Input />
       <Tasks />
       <Footer />
     </div>
+    <div :class="$style.secondList"></div>
+    <div :class="$style.thirdList"></div>
   </div>
 </template>
 
@@ -26,19 +28,45 @@ export default {
 </script>
 
 <style lang="scss" module>
-.page {
+body {
+  padding: 3rem 0.5rem;
+  font-family: "Helvetica Neue";
+  font-weight: 200;
+  font-size: 16px;
   background-color: $main-color;
   color: $box-color;
-  font-family: "Raleway", sans-serif;
-}
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-.list {
-  margin: 0 auto;
-  height: auto;
-  width: 30vw;
-  height: auto;
-  line-height: 1.8;
-  background-color: $list-color;
-  box-shadow: 0 0.25rem 0.625rem #36363680;
+  .firstList {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    height: auto;
+    width: 30vw;
+    line-height: 1.8;
+    background-color: $list-color;
+    box-shadow: 0 3px 10px #36363680;
+    overflow-y: auto;
+  }
+
+  .secondList {
+    width: 99%;
+    height: 0.3rem;
+    z-index: -1;
+    margin: 0 auto;
+    background-color: $list-color;
+    box-shadow: 0 3px 10px #36363680;
+  }
+  .thirdList {
+    width: 98%;
+    height: 0.3rem;
+    z-index: -2;
+    margin: 0 auto;
+    background-color: $list-color;
+    box-shadow: 0 3px 10px #36363680;
+  }
 }
 </style>

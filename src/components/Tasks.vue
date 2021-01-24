@@ -1,36 +1,22 @@
 <template>
-  <div :class="$style.tasks">
-    <Task v-for="task of tasks" :key="task" :task="task.task" />
+  <div>
+    <Task v-for="task of TODOS" :key="task.id" :task="task.title" />
   </div>
 </template>
 
 <script>
 import Task from "./Task";
+import { mapGetters, mapActions } from "vuex";
 export default {
-  data: () => ({
-    tasks: [
-      {
-        task: "New Task 1"
-      },
-      {
-        task: "New Task 2"
-      },
-      {
-        task: "New Task 3"
-      }
-    ]
-  }),
   components: {
     Task
+  },
+  computed: mapGetters(["TODOS"]),
+  methods: mapActions(["GET_TODO"]),
+  async mounted() {
+    this.GET_TODO();
   }
 };
 </script>
 
-<style lang="scss" module>
-.tasks {
-  display: block;
-  padding: 0.2rem 0;
-  border-bottom: 0.06rem solid $task-color;
-  font-size: 1.125rem;
-}
-</style>
+<style lang="scss" module></style>

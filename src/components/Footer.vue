@@ -28,5 +28,8 @@ export default {
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem;
+  flex-wrap: wrap;
+  border-top: 1px solid #e6e6e6;
+  color: #a0a0a0;
 }
 </style>

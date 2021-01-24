@@ -1,5 +1,5 @@
 <template>
-  <div class="tabs">
+  <div :class="$style.tabs">
     <Tab v-for="tab of tabs" :key="tab" :tab="tab" />
   </div>
 </template>
@@ -18,6 +18,7 @@ export default {
 
 <style lang="scss" module>
 .tabs {
-  display: flex;
+  cursor: pointer;
+  margin: 0.2rem;
 }
 </style>
