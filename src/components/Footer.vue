@@ -1,21 +1,17 @@
 <template>
   <div :class="$style.footer">
-    <div>
-      2 2 left
-    </div>
-    <Tabs :tabs="tabs" />
-    <div>
-      Clear completed
-    </div>
+    <div>{{ remaining }} left</div>
+    <Tabs />
+    Clear completed
   </div>
 </template>
 
 <script>
 import Tabs from "./Tabs";
+import { mapGetters } from "vuex";
+
 export default {
-  data: () => ({
-    tabs: ["All", "Active", "Completed"]
-  }),
+  computed: mapGetters(["remaining"]),
   components: {
     Tabs
   }

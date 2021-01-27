@@ -1,15 +1,15 @@
 <template>
   <div :class="$style.tabs">
-    <Tab v-for="tab of tabs" :key="tab" :tab="tab" />
+    <Tab tab="All" status="allTasks" />
+    <Tab tab="Active" status="activeTasks" />
+    <Tab tab="Completed" status="completedTasks" />
   </div>
 </template>
 
 <script>
 import Tab from "./Tab";
 export default {
-  props: {
-    tabs: Array
-  },
+  name: "Tabs",
   components: {
     Tab
   }

@@ -3,7 +3,7 @@
     <input
       type="text"
       placeholder="What's needs to be done?  "
-      v-model="title"
+      v-model="newTodo"
     />
   </form>
 </template>
@@ -13,16 +13,22 @@ import { mapMutations } from "vuex";
 export default {
   data() {
     return {
-      title: ""
+      newTodo: "",
+      idForTodo: 2
     };
   },
   methods: {
     ...mapMutations(["ADD_TODO"]),
     send() {
+      if (this.newTodo.trim().length == 0) {
+        return;
+      }
       this.ADD_TODO({
-        title: this.title
+        id: this.idForTodo,
+        title: this.newTodo
       });
-      this.title = "";
+      this.newTodo = "";
+      this.idForTodo++;
     }
   }
 };

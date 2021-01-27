@@ -1,16 +1,34 @@
 <template>
   <label :class="$style.task">
-    <input type="checkbox" />
+    <input type="checkbox" v-model="completed" @click="Change" />
     <i></i>
-    <span>{{ task }}</span>
+    <span>{{ todo }}</span>
   </label>
 </template>
 
 <script>
+import { mapMutations } from "vuex";
 export default {
   name: "Task",
   props: {
-    task: String
+    todo: {
+      type: Object,
+      required: true
+    },
+    checked: Boolean
+  },
+  data() {
+    return {
+      id: this.todo.id,
+      title: this.todo.title,
+      completed: this.todo.completed
+    };
+  },
+  methods: {
+    ...mapMutations(["changeStatus"]),
+    Change() {
+      this.changeStatus(this.id);
+    }
   }
 };
 </script>

@@ -1,31 +1,61 @@
 export default {
   state: {
-    todos: []
+    status: { type: "completedTasks" },
+    todos: [
+      {
+        id: 1,
+        title: "Сходить в магазин",
+        completed: false
+      }
+    ]
   },
   mutations: {
-    // SET_TODO: (state, payload) => {
-    //   state.todos = payload;
-    // },
-    ADD_TODO: (state, payload) => {
-      state.todos.push(payload);
+    ADD_TODO(state, todos) {
+      state.todos.push({
+        id: todos.id,
+        title: todos.title,
+        completed: false
+      });
+    },
+    changeStatus(state, givenId) {
+      state.todos.map(todos => {
+        if (todos.id === givenId) todos.completed = !todos.completed;
+      });
     }
   },
   actions: {
-    // async GET_TODO(ctx) {
-    //   const res = await fetch("https://jsonplaceholder.typicode.com/todos?_limit=2");
-    //   const td = await res.json();
-    //   ctx.commit("SET_TODO", td);
-    // }
+    ADD_TODO(context, todos) {
+      context.commit("ADD_TODO", todos);
+    }
   },
 
   getters: {
-    validTodos: state => {
-      return state.todos.filter(td => {
-        td.title;
-      });
+    remaining(state) {
+      return state.todos.filter(todo => todo.completed === false).length;
+    },
+    todosFiltered: (state, getters) => {
+      if (state.status === "activeTasks") {
+        return getters.allTasks;
+      } else if (state.status === "allTasks") {
+        return getters.activeTasks;
+      } else if (state.status === "completedTasks") {
+        return getters.completedTasks;
+      }
+      return state.todos;
     },
     TODOS: state => {
       return state.todos;
+    },
+
+    allTasks(state) {
+      return state.todos;
+    },
+
+    activeTasks(state) {
+      return state.todos.filter(todos => todos.completed === true);
+    },
+    completedTasks(state) {
+      return state.todos.filter(todos => todos.completed === false);
     }
   }
 };

@@ -1,21 +1,17 @@
 <template>
   <div>
-    <Task v-for="task of TODOS" :key="task.id" :task="task.title" />
+    <Task v-for="todo of TODOS" :key="todo.id" :todo="todo" />
   </div>
 </template>
 
 <script>
 import Task from "./Task";
-import { mapGetters, mapActions } from "vuex";
+import { mapGetters } from "vuex";
 export default {
   components: {
     Task
   },
-  computed: mapGetters(["TODOS"]),
-  methods: mapActions(["GET_TODO"]),
-  async mounted() {
-    this.GET_TODO();
-  }
+  computed: mapGetters(["TODOS"])
 };
 </script>
 
