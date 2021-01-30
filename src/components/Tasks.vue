@@ -1,6 +1,12 @@
 <template>
   <div>
-    <Task v-for="todo of TODOS" :key="todo.id" :todo="todo" />
+    <Task
+      v-for="todo of todosFiltered"
+      :key="todo.id"
+      :title="todo.title"
+      :checked="todo.completed"
+      :id="todo.id"
+    />
   </div>
 </template>
 
@@ -11,7 +17,7 @@ export default {
   components: {
     Task
   },
-  computed: mapGetters(["TODOS"])
+  computed: mapGetters(["todosFiltered"])
 };
 </script>
 

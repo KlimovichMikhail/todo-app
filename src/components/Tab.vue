@@ -1,52 +1,51 @@
 <template>
-  <!-- <label :class="$style.tab" :name="status" v-on:click="choiceTypeTasks"> -->
-  <!-- <input type="radio" name="filter" checked /> -->
-  <button :name="status" class="nav-button" v-on:click="choiceTypeTasks">
+  <label :class="$style.tab">
+    <input
+      type="radio"
+      @click="changeTab(), changeFilter()"
+      :checked="checked"
+      :name="tabState"
+    />
     <span>{{ tab }}</span>
-  </button>
-  <!-- </label> -->
+  </label>
 </template>
 
 <script>
 import { mapMutations } from "vuex";
 export default {
   name: "Tab",
-  props: ["tab", "status"],
+  props: {
+    tab: String,
+    checked: Boolean,
+    tabId: Number,
+    tabState: String
+  },
+
   methods: {
-    ...mapMutations(["changeTypeTasks"]),
-    choiceTypeTasks() {
-      this.changeTypeTasks(event.target.name);
+    ...mapMutations(["tabChange", "updateFilter"]),
+    changeFilter() {
+      this.updateFilter(this.tabState);
+    },
+    changeTab() {
+      this.tabChange(this.tabId);
     }
   }
 };
 </script>
 
 <style lang="scss" module>
-// .tab {
-//   margin: 0 0.5rem;
-//   padding: 0.25rem;
-
-//   input[type="radio"]:checked + span {
-//     padding: 0.2rem;
-//     border: 1px solid #ebd8d7;
-//   }
-// }
-// input[type="radio"] {
-//   display: none;
-// }
-.nav-button {
-  margin-right: 0.5rem;
-  background-color: transparent;
-  font-size: 1rem;
-  color: #777;
-  outline: none;
-  border: 0.1rem solid transparent;
-  border-radius: 0.2rem;
+.tab {
   cursor: pointer;
-}
-.nav-button:hover,
-.nav-button:focus {
-  border: 0.1rem solid red;
-  color: black;
+  span {
+    margin: 0 0.5rem;
+    padding: 0.25rem;
+  }
+  input[type="radio"]:checked + span {
+    padding: 0.2rem;
+    border: 1px solid $border-color;
+  }
+  input[type="radio"] {
+    display: none;
+  }
 }
 </style>

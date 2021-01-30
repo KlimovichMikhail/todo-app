@@ -1,9 +1,14 @@
 <template>
-  <label :class="$style.task">
-    <input type="checkbox" v-model="completed" @click="Change" />
-    <i></i>
-    <span>{{ todo }}</span>
-  </label>
+  <div>
+    <label :class="$style.task">
+      <input type="checkbox" @click="Change(id)" :checked="checked" :id="id" />
+      <i></i>
+      <span :class="$style.title">{{ title }}</span>
+      <span :class="$style.remove" @click="removeTodo(id)">
+        &times;
+      </span>
+    </label>
+  </div>
 </template>
 
 <script>
@@ -11,23 +16,17 @@ import { mapMutations } from "vuex";
 export default {
   name: "Task",
   props: {
-    todo: {
-      type: Object,
-      required: true
-    },
-    checked: Boolean
-  },
-  data() {
-    return {
-      id: this.todo.id,
-      title: this.todo.title,
-      completed: this.todo.completed
-    };
+    title: String,
+    checked: Boolean,
+    id: Number
   },
   methods: {
-    ...mapMutations(["changeStatus"]),
-    Change() {
-      this.changeStatus(this.id);
+    ...mapMutations(["changeStatus", "deleteTodo"]),
+    Change(id) {
+      this.changeStatus(id);
+    },
+    removeTodo(id) {
+      this.deleteTodo(id);
     }
   }
 };
@@ -41,21 +40,21 @@ export default {
   padding: 1rem;
 
   + .task {
-    border-top: 1px solid #e6e6e6;
+    border-top: 1px solid $task-color;
   }
   input {
     display: none;
   }
-  span {
-    flex: 1;
+  .title {
+    width: 30rem;
     font-size: 1.3rem;
     font-weight: 100;
   }
   i {
     position: relative;
     margin-right: 1rem;
-    background-color: #fff;
-    border: 1px solid #ccc;
+    background-color: $background;
+    border: 1px solid $border-color;
     border-radius: 50%;
     height: 1.75rem;
     width: 1.75rem;
@@ -66,7 +65,7 @@ export default {
     top: 0.5rem;
     left: 0.45rem;
     opacity: 0;
-    border: 2px solid #ffffff;
+    border: 2px solid $border-color;
     border-top: none;
     border-right: none;
     transform: rotate(-45deg);
@@ -80,9 +79,17 @@ export default {
     opacity: 1;
     border-color: #66bb6a;
   }
-  input[type="checkbox"]:checked ~ span {
+  input[type="checkbox"]:checked ~ .title {
     text-decoration: line-through;
     color: #c8c8c8;
+  }
+  .remove {
+    cursor: pointer;
+    box-sizing: content-box;
+    width: 10px;
+    &:hover {
+      color: black;
+    }
   }
 }
 </style>

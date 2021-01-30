@@ -2,7 +2,10 @@
   <div :class="$style.footer">
     <div>{{ remaining }} left</div>
     <Tabs />
-    Clear completed
+    <span></span>
+    <div :class="$style.clear" @click="clearCompleted">
+      Clear completed
+    </div>
   </div>
 </template>
 
@@ -14,6 +17,11 @@ export default {
   computed: mapGetters(["remaining"]),
   components: {
     Tabs
+  },
+  methods: {
+    clearCompleted() {
+      this.$store.dispatch("clearCompleted");
+    }
   }
 };
 </script>
@@ -25,7 +33,11 @@ export default {
   justify-content: space-between;
   padding: 0.5rem;
   flex-wrap: wrap;
-  border-top: 1px solid #e6e6e6;
-  color: #a0a0a0;
+  border-top: 1px solid $task-color;
+  color: $tab-color;
+  font-size: 15px;
+}
+.clear {
+  cursor: pointer;
 }
 </style>

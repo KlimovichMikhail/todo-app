@@ -10,6 +10,7 @@
 
 <script>
 import { mapMutations } from "vuex";
+import { uuid } from "vue-uuid";
 export default {
   data() {
     return {
@@ -18,13 +19,13 @@ export default {
     };
   },
   methods: {
-    ...mapMutations(["ADD_TODO"]),
+    ...mapMutations(["addTodo"]),
     send() {
       if (this.newTodo.trim().length == 0) {
         return;
       }
-      this.ADD_TODO({
-        id: this.idForTodo,
+      this.addTodo({
+        id: uuid.v1(),
         title: this.newTodo
       });
       this.newTodo = "";
@@ -37,7 +38,7 @@ export default {
 .input {
   display: flex;
   width: 100%;
-  border-bottom: 1px solid #e6e6e6;
+  border-bottom: 1px solid $task-color;
   padding: 20px;
 }
 input[type="text"] {
@@ -48,6 +49,6 @@ input[type="text"] {
   border: 0;
   width: 100%;
   outline: none;
-  color: #505050;
+  color: $box-color;
 }
 </style>

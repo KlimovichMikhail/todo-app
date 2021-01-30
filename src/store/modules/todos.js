@@ -1,31 +1,69 @@
+import { uuid } from "vue-uuid";
+
 export default {
   state: {
-    status: { type: "completedTasks" },
+    filter: "all",
     todos: [
       {
-        id: 1,
+        id: uuid.v1(),
         title: "Сходить в магазин",
         completed: false
+      }
+    ],
+    tab: [
+      {
+        id: uuid.v1(),
+        tabText: "All",
+        selected: true,
+        tabName: "all"
+      },
+      {
+        id: uuid.v1(),
+        tabText: "Active",
+        selected: false,
+        tabName: "active"
+      },
+      {
+        id: uuid.v1(),
+        tabText: "Completed",
+        selected: false,
+        tabName: "completed"
       }
     ]
   },
   mutations: {
-    ADD_TODO(state, todos) {
+    addTodo(state, todos) {
       state.todos.push({
         id: todos.id,
         title: todos.title,
         completed: false
       });
     },
-    changeStatus(state, givenId) {
+    changeStatus(state, id) {
       state.todos.map(todos => {
-        if (todos.id === givenId) todos.completed = !todos.completed;
+        if (todos.id === id) todos.completed = !todos.completed;
+      });
+    },
+    updateFilter(state, filter) {
+      state.filter = filter;
+    },
+    deleteTodo(state, id) {
+      const index = state.todos.findIndex(item => item.id == id);
+      state.todos.splice(index, 1);
+    },
+    clearCompleted(state) {
+      state.todos = state.todos.filter(todo => !todo.completed);
+    },
+    tabChange(state, id) {
+      state.tab.map(tab => {
+        if (tab.id === id) tab.selected = true;
+        else tab.selected = false;
       });
     }
   },
   actions: {
-    ADD_TODO(context, todos) {
-      context.commit("ADD_TODO", todos);
+    clearCompleted(context) {
+      context.commit("clearCompleted");
     }
   },
 
@@ -34,28 +72,26 @@ export default {
       return state.todos.filter(todo => todo.completed === false).length;
     },
     todosFiltered: (state, getters) => {
-      if (state.status === "activeTasks") {
+      if (state.filter == "all") {
         return getters.allTasks;
-      } else if (state.status === "allTasks") {
+      } else if (state.filter == "active") {
         return getters.activeTasks;
-      } else if (state.status === "completedTasks") {
+      } else if (state.filter == "completed") {
         return getters.completedTasks;
       }
-      return state.todos;
+      return getters.allTasks;
     },
-    TODOS: state => {
-      return state.todos;
-    },
-
     allTasks(state) {
       return state.todos;
     },
-
     activeTasks(state) {
-      return state.todos.filter(todos => todos.completed === true);
+      return state.todos.filter(todo => !todo.completed);
     },
     completedTasks(state) {
-      return state.todos.filter(todos => todos.completed === false);
+      return state.todos.filter(todo => todo.completed);
+    },
+    allTabs(state) {
+      return state.tab;
     }
   }
 };

@@ -48,7 +48,7 @@ body {
     width: 30vw;
     line-height: 1.8;
     background-color: $list-color;
-    box-shadow: 0 3px 10px #36363680;
+    box-shadow: 0 3px 10px $box-color;
     overflow-y: auto;
   }
 
@@ -58,7 +58,7 @@ body {
     z-index: -1;
     margin: 0 auto;
     background-color: $list-color;
-    box-shadow: 0 3px 10px #36363680;
+    box-shadow: 0 3px 10px $box-color;
   }
   .thirdList {
     width: 98%;
@@ -66,7 +66,7 @@ body {
     z-index: -2;
     margin: 0 auto;
     background-color: $list-color;
-    box-shadow: 0 3px 10px #36363680;
+    box-shadow: 0 3px 10px $box-color;
   }
 }
 </style>
