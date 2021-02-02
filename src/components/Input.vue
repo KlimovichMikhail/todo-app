@@ -10,7 +10,7 @@
 
 <script>
 import { mapMutations } from "vuex";
-import { uuid } from "vue-uuid";
+import { v4 as uuidv4 } from "uuid";
 export default {
   data() {
     return {
@@ -25,7 +25,7 @@ export default {
         return;
       }
       this.addTodo({
-        id: uuid.v1(),
+        id: uuidv4(),
         title: this.newTodo
       });
       this.newTodo = "";

@@ -1,30 +1,24 @@
-import { uuid } from "vue-uuid";
+import { v4 as uuidv4 } from "uuid";
 
 export default {
   state: {
     filter: "all",
-    todos: [
-      {
-        id: uuid.v1(),
-        title: "Сходить в магазин",
-        completed: false
-      }
-    ],
+    todos: [],
     tab: [
       {
-        id: uuid.v1(),
+        id: uuidv4(),
         tabText: "All",
         selected: true,
         tabName: "all"
       },
       {
-        id: uuid.v1(),
+        id: uuidv4(),
         tabText: "Active",
         selected: false,
         tabName: "active"
       },
       {
-        id: uuid.v1(),
+        id: uuidv4(),
         tabText: "Completed",
         selected: false,
         tabName: "completed"
@@ -32,17 +26,22 @@ export default {
     ]
   },
   mutations: {
+    getFromStorage(state) {
+      state.todos = JSON.parse(localStorage.getItem("todos") || "[]");
+    },
     addTodo(state, todos) {
       state.todos.push({
         id: todos.id,
         title: todos.title,
         completed: false
       });
+      localStorage.setItem("todos", JSON.stringify(state.todos));
     },
     changeStatus(state, id) {
       state.todos.map(todos => {
         if (todos.id === id) todos.completed = !todos.completed;
       });
+      localStorage.setItem("todos", JSON.stringify(state.todos));
     },
     updateFilter(state, filter) {
       state.filter = filter;
@@ -50,22 +49,21 @@ export default {
     deleteTodo(state, id) {
       const index = state.todos.findIndex(item => item.id == id);
       state.todos.splice(index, 1);
+      localStorage.setItem("todos", JSON.stringify(state.todos));
     },
     clearCompleted(state) {
       state.todos = state.todos.filter(todo => !todo.completed);
+      localStorage.setItem("todos", JSON.stringify(state.todos));
     },
     tabChange(state, id) {
       state.tab.map(tab => {
         if (tab.id === id) tab.selected = true;
         else tab.selected = false;
       });
+      localStorage.setItem("todos", JSON.stringify(state.todos));
     }
   },
-  actions: {
-    clearCompleted(context) {
-      context.commit("clearCompleted");
-    }
-  },
+  actions: {},
 
   getters: {
     remaining(state) {
