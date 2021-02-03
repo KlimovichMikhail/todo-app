@@ -2,7 +2,6 @@
   <div :class="$style.footer">
     <div>{{ remaining }} left</div>
     <Tabs />
-    <span></span>
     <div :class="$style.clear" @click="clearCompleted">
       Clear completed
     </div>
@@ -20,7 +19,7 @@ export default {
   },
   methods: {
     clearCompleted() {
-      this.$store.dispatch("clearCompleted");
+      this.$store.commit("clearCompleted");
     }
   }
 };

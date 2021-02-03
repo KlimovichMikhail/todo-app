@@ -1,34 +1,22 @@
 <template>
-  <label :class="$style.tab">
+  <label :class="$style.tab" v-for="tab in tabs" :key="tab">
     <input
       type="radio"
-      @click="changeTab(), changeFilter()"
-      :checked="checked"
-      :name="tabState"
+      name="filter"
+      :value="tab"
+      @change="$emit('input', tab)"
+      :checked="tab === value"
     />
     <span>{{ tab }}</span>
   </label>
 </template>
 
 <script>
-import { mapMutations } from "vuex";
 export default {
   name: "Tab",
   props: {
-    tab: String,
-    checked: Boolean,
-    tabId: Number,
-    tabState: String
-  },
-
-  methods: {
-    ...mapMutations(["tabChange", "updateFilter"]),
-    changeFilter() {
-      this.updateFilter(this.tabState);
-    },
-    changeTab() {
-      this.tabChange(this.tabId);
-    }
+    tabs: Array,
+    value: String
   }
 };
 </script>

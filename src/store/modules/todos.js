@@ -2,40 +2,23 @@ import { v4 as uuidv4 } from "uuid";
 
 export default {
   state: {
-    filter: "all",
-    todos: [],
-    tab: [
-      {
-        id: uuidv4(),
-        tabText: "All",
-        selected: true,
-        tabName: "all"
-      },
-      {
-        id: uuidv4(),
-        tabText: "Active",
-        selected: false,
-        tabName: "active"
-      },
-      {
-        id: uuidv4(),
-        tabText: "Completed",
-        selected: false,
-        tabName: "completed"
-      }
-    ]
+    filter: "All",
+    todos: []
   },
   mutations: {
     getFromStorage(state) {
       state.todos = JSON.parse(localStorage.getItem("todos") || "[]");
     },
-    addTodo(state, todos) {
+    addTodo(state, newTitle) {
       state.todos.push({
-        id: todos.id,
-        title: todos.title,
+        id: uuidv4(),
+        title: newTitle,
         completed: false
       });
       localStorage.setItem("todos", JSON.stringify(state.todos));
+    },
+    setFilter(state, filter) {
+      state.filter = filter;
     },
     changeStatus(state, id) {
       state.todos.map(todos => {
@@ -43,23 +26,12 @@ export default {
       });
       localStorage.setItem("todos", JSON.stringify(state.todos));
     },
-    updateFilter(state, filter) {
-      state.filter = filter;
-    },
-    deleteTodo(state, id) {
-      const index = state.todos.findIndex(item => item.id == id);
-      state.todos.splice(index, 1);
+    deleteTodo(state, idDelete) {
+      state.todos = state.todos.filter(todo => todo.id !== idDelete);
       localStorage.setItem("todos", JSON.stringify(state.todos));
     },
     clearCompleted(state) {
       state.todos = state.todos.filter(todo => !todo.completed);
-      localStorage.setItem("todos", JSON.stringify(state.todos));
-    },
-    tabChange(state, id) {
-      state.tab.map(tab => {
-        if (tab.id === id) tab.selected = true;
-        else tab.selected = false;
-      });
       localStorage.setItem("todos", JSON.stringify(state.todos));
     }
   },
@@ -70,14 +42,11 @@ export default {
       return state.todos.filter(todo => todo.completed === false).length;
     },
     todosFiltered: (state, getters) => {
-      if (state.filter == "all") {
-        return getters.allTasks;
-      } else if (state.filter == "active") {
+      if (state.filter == "Active") {
         return getters.activeTasks;
-      } else if (state.filter == "completed") {
+      } else if (state.filter == "Completed") {
         return getters.completedTasks;
-      }
-      return getters.allTasks;
+      } else return getters.allTasks;
     },
     allTasks(state) {
       return state.todos;

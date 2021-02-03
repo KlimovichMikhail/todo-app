@@ -10,12 +10,10 @@
 
 <script>
 import { mapMutations } from "vuex";
-import { v4 as uuidv4 } from "uuid";
 export default {
   data() {
     return {
-      newTodo: "",
-      idForTodo: 2
+      newTodo: ""
     };
   },
   methods: {
@@ -24,12 +22,8 @@ export default {
       if (this.newTodo.trim().length == 0) {
         return;
       }
-      this.addTodo({
-        id: uuidv4(),
-        title: this.newTodo
-      });
+      this.addTodo(this.newTodo);
       this.newTodo = "";
-      this.idForTodo++;
     }
   }
 };
