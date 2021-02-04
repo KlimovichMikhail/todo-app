@@ -1,7 +1,12 @@
 <template>
   <div>
     <label :class="$style.task">
-      <input type="checkbox" @click="Change(id)" :checked="checked" :id="id" />
+      <input
+        type="checkbox"
+        :checked="completed"
+        @change="e => $emit('change', e)"
+        :id="id"
+      />
       <i></i>
       <span :class="$style.title">{{ title }}</span>
       <span :class="$style.remove" @click="removeTodo(id)">
@@ -17,14 +22,11 @@ export default {
   name: "Task",
   props: {
     title: String,
-    checked: Boolean,
-    id: Number
+    completed: Boolean,
+    id: String
   },
   methods: {
-    ...mapMutations(["changeStatus", "deleteTodo"]),
-    Change(id) {
-      this.changeStatus(id);
-    },
+    ...mapMutations(["deleteTodo"]),
     removeTodo(id) {
       this.deleteTodo(id);
     }

@@ -20,10 +20,10 @@ export default {
     setFilter(state, filter) {
       state.filter = filter;
     },
-    changeStatus(state, id) {
-      state.todos.map(todos => {
-        if (todos.id === id) todos.completed = !todos.completed;
-      });
+    changeTaskStatus(state, { id, value }) {
+      state.todos = state.todos.map(todo =>
+        todo.id === id ? { ...todo, completed: value } : todo
+      );
       localStorage.setItem("todos", JSON.stringify(state.todos));
     },
     deleteTodo(state, idDelete) {

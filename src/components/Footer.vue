@@ -1,7 +1,7 @@
 <template>
   <div :class="$style.footer">
     <div>{{ remaining }} left</div>
-    <Tabs />
+    <Tab :options="filters" v-model="filter" />
     <div :class="$style.clear" @click="clearCompleted">
       Clear completed
     </div>
@@ -9,13 +9,29 @@
 </template>
 
 <script>
-import Tabs from "./Tabs";
-import { mapGetters } from "vuex";
+import Tab from "./Tab";
 
 export default {
-  computed: mapGetters(["remaining"]),
+  data() {
+    return {
+      filters: ["All", "Active", "Completed"]
+    };
+  },
+  computed: {
+    remaining() {
+      return this.$store.getters.remaining;
+    },
+    filter: {
+      get() {
+        return this.$store.state.filter;
+      },
+      set(value) {
+        this.$store.commit("setFilter", value);
+      }
+    }
+  },
   components: {
-    Tabs
+    Tab
   },
   methods: {
     clearCompleted() {
