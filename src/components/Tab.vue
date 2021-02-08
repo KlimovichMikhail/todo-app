@@ -5,8 +5,8 @@
         type="radio"
         name="filter"
         :value="option"
-        :checked="value === option"
-        @change="$emit('input', option)"
+        :checked="modelValue === option"
+        @change="$emit('update:modelValue', option)"
       />
       <span>{{ option }}</span>
     </label>
@@ -18,7 +18,7 @@ export default {
   name: "Tab",
   props: {
     options: Array,
-    value: String
+    modelValue: String
   }
 };
 </script>

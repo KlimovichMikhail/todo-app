@@ -4,7 +4,7 @@
       v-for="todo of todosFiltered"
       :key="todo.id"
       :title="todo.title"
-      :comleted="todo.completed"
+      :completed="todo.completed"
       :id="todo.id"
       @change="e => setTask(todo.id, e.target.checked)"
     />
