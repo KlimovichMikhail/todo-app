@@ -1,23 +1,42 @@
 <template>
   <div :class="$style.footer">
-    <div>
-      2 2 left
-    </div>
-    <Tabs :tabs="tabs" />
-    <div>
+    <div>{{ remaining }} left</div>
+    <Tab :options="filters" v-model="filter" />
+    <div :class="$style.clear" @click="clearCompleted">
       Clear completed
     </div>
   </div>
 </template>
 
 <script>
-import Tabs from "./Tabs";
+import Tab from "./Tab";
+
 export default {
-  data: () => ({
-    tabs: ["All", "Active", "Completed"]
-  }),
+  data() {
+    return {
+      filters: ["All", "Active", "Completed"]
+    };
+  },
+  computed: {
+    remaining() {
+      return this.$store.getters.remaining;
+    },
+    filter: {
+      get() {
+        return this.$store.state.filter;
+      },
+      set(value) {
+        this.$store.commit("setFilter", value);
+      }
+    }
+  },
   components: {
-    Tabs
+    Tab
+  },
+  methods: {
+    clearCompleted() {
+      this.$store.commit("clearCompleted");
+    }
   }
 };
 </script>
@@ -28,5 +47,12 @@ export default {
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem;
+  flex-wrap: wrap;
+  border-top: 1px solid $task-color;
+  color: $tab-color;
+  font-size: 15px;
+}
+.clear {
+  cursor: pointer;
 }
 </style>

@@ -4,9 +4,9 @@
 
 <style lang="scss" module>
 .title {
-  font-size: 6.25rem;
-  text-align: center;
-  margin: 0 0 1.25rem 0;
+  font-weight: 100;
+  font-size: 7rem;
   color: $title-color;
+  text-align: center;
 }
 </style>

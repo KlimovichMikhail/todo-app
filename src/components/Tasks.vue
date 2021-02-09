@@ -1,36 +1,31 @@
 <template>
-  <div :class="$style.tasks">
-    <Task v-for="task of tasks" :key="task" :task="task.task" />
+  <div>
+    <Task
+      v-for="todo of todosFiltered"
+      :key="todo.id"
+      :title="todo.title"
+      :completed="todo.completed"
+      :id="todo.id"
+      @change="e => setTask(todo.id, e.target.checked)"
+    />
   </div>
 </template>
 
 <script>
 import Task from "./Task";
+import { mapGetters, mapMutations } from "vuex";
 export default {
-  data: () => ({
-    tasks: [
-      {
-        task: "New Task 1"
-      },
-      {
-        task: "New Task 2"
-      },
-      {
-        task: "New Task 3"
-      }
-    ]
-  }),
   components: {
     Task
+  },
+  computed: mapGetters(["todosFiltered"]),
+  methods: {
+    ...mapMutations(["changeTaskStatus"]),
+    setTask(id, value) {
+      this.changeTaskStatus({ id, value });
+    }
   }
 };
 </script>
 
-<style lang="scss" module>
-.tasks {
-  display: block;
-  padding: 0.2rem 0;
-  border-bottom: 0.06rem solid $task-color;
-  font-size: 1.125rem;
-}
-</style>
+<style lang="scss" module></style>
