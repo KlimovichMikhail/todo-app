@@ -1,5 +1,5 @@
 <template>
-  <H1 :class="$style.title">todos</H1>
+  <h1 :class="$style.title">todos</h1>
 </template>
 
 <style lang="scss" module>

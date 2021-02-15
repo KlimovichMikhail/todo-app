@@ -9,24 +9,21 @@
 </template>
 
 <script>
-import { mapMutations } from "vuex";
+import { mapMutations } from 'vuex'
 export default {
   data() {
     return {
-      newTodo: ""
-    };
+      newTodo: ''
+    }
   },
   methods: {
-    ...mapMutations(["addTodo"]),
+    ...mapMutations(['addTodo']),
     send() {
-      if (this.newTodo.trim().length == 0) {
-        return;
-      }
-      this.addTodo(this.newTodo);
-      this.newTodo = "";
+      this.$store.commit('addTodo', this.newTodo)
+      this.newTodo = ''
     }
   }
-};
+}
 </script>
 <style lang="scss" module>
 .input {
@@ -35,8 +32,8 @@ export default {
   border-bottom: 1px solid $task-color;
   padding: 20px;
 }
-input[type="text"] {
-  font-family: "Helvetica Neue";
+input[type='text'] {
+  font-family: 'Helvetica Neue';
   font-size: 1.5rem;
   font-weight: 100;
   font-style: italic;
