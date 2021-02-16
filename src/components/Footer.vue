@@ -2,9 +2,9 @@
   <div :class="$style.footer">
     <div>{{ remaining }} left</div>
     <Tab :options="filters" v-model="filter" />
-    <div :class="$style.clear" @click="clearCompleted">
+    <button :class="$style.clear" @click="clearCompleted">
       Clear completed
-    </div>
+    </button>
   </div>
 </template>
 

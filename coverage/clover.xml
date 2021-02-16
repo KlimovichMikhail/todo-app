@@ -1,6 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1613419713230" clover="3.2.0">
-  <project timestamp="1613419713230" name="All files">
-    <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0" elements="0" coveredelements="0" complexity="0" loc="0" ncloc="0" packages="0" files="0" classes="0"/>
+<coverage generated="1613504007268" clover="3.2.0">
+  <project timestamp="1613504007269" name="All files">
+    <metrics statements="20" coveredstatements="20" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="10" elements="30" coveredelements="30" complexity="0" loc="20" ncloc="20" packages="2" files="5" classes="5"/>
+    <package name="components">
+      <metrics statements="15" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="9" coveredmethods="9"/>
+      <file name="Footer.vue" path="D:\Слияние\todo-app\src\components\Footer.vue">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="16" count="3" type="stmt"/>
+        <line num="22" count="3" type="stmt"/>
+        <line num="26" count="3" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+      </file>
+      <file name="Input.vue" path="D:\Слияние\todo-app\src\components\Input.vue">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+      </file>
+      <file name="Task.vue" path="D:\Слияние\todo-app\src\components\Task.vue">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="20" count="3" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+      </file>
+      <file name="Tasks.vue" path="D:\Слияние\todo-app\src\components\Tasks.vue">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="views">
+      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="Home.vue" path="D:\Слияние\todo-app\src\views\Home.vue">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+      </file>
+    </package>
   </project>
 </coverage>

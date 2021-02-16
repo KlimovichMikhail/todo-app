@@ -9,9 +9,9 @@
       />
       <i></i>
       <span :class="$style.title">{{ title }}</span>
-      <span :class="$style.remove" @click="removeTodo(id)">
+      <button :class="$style.remove" @click="removeTodo(id)">
         &times;
-      </span>
+      </button>
     </label>
   </div>
 </template>

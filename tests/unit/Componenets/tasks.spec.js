@@ -1,4 +1,4 @@
-import { mount, shallowMount, createLocalVue } from '@vue/test-utils'
+import { mount, createLocalVue } from '@vue/test-utils'
 import Tasks from '@/components/Tasks'
 import Vuex from 'vuex'
 
@@ -12,7 +12,8 @@ let getters
 describe('test for component Task', () => {
   beforeEach(() => {
     mutations = {
-      getFromStorage: jest.fn()
+      getFromStorage: jest.fn(),
+      changeTaskStatus: jest.fn()
     }
     getters = {
       todosFiltered: () => [
@@ -39,23 +40,10 @@ describe('test for component Task', () => {
     expect(wrapper.find('Task')).toBeTruthy()
     expect(wrapper.isVisible()).toBe(true)
   })
-})
-describe('unit tests for Task', () => {
-  test('contain a Task', () => {
-    const wrapper = shallowMount(Tasks, { store, localVue })
-    expect(wrapper.find('div')).toBeTruthy()
-  })
-
-  test('contain a Task of input', () => {
-    const wrapper = shallowMount(Tasks, { store, localVue })
-    expect(wrapper.find('input')).toBeTruthy()
-  })
-})
-describe('unit tests for Task input type checked', () => {
-  test('setChecked', async () => {
+  it('call "changeTaskStatus"', () => {
     const wrapper = mount(Tasks, { store, localVue })
-    const checkboxInput = wrapper.find('input[type="checkbox"]')
-    await checkboxInput.setChecked()
-    expect(checkboxInput.element.checked).toBeTruthy()
+    console.log(wrapper.html())
+    wrapper.find('input').trigger('change')
+    expect(mutations.changeTaskStatus).toHaveBeenCalled()
   })
 })

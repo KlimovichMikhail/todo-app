@@ -39,7 +39,11 @@ export default new Vuex.Store({
       localStorage.setItem('todos', JSON.stringify(state.todos))
     }
   },
-  actions: {},
+  actions: {
+    getFromStorage(context) {
+      context.commit('getFromStorage')
+    }
+  },
 
   getters: {
     remaining(state) {
@@ -60,6 +64,6 @@ export default new Vuex.Store({
     },
     completedTasks(state) {
       return state.todos.filter(todo => todo.completed)
-    }    
+    }
   }
 })
