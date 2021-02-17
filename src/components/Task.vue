@@ -9,29 +9,29 @@
       />
       <i></i>
       <span :class="$style.title">{{ title }}</span>
-      <span :class="$style.remove" @click="removeTodo(id)">
+      <button :class="$style.remove" @click="removeTodo(id)">
         &times;
-      </span>
+      </button>
     </label>
   </div>
 </template>
 
 <script>
-import { mapMutations } from "vuex";
+import { mapMutations } from 'vuex'
 export default {
-  name: "Task",
+  name: 'Task',
   props: {
     title: String,
     completed: Boolean,
     id: String
   },
   methods: {
-    ...mapMutations(["deleteTodo"]),
+    ...mapMutations(['deleteTodo']),
     removeTodo(id) {
-      this.deleteTodo(id);
+      this.deleteTodo(id)
     }
   }
-};
+}
 </script>
 
 <style lang="scss" module>
@@ -62,7 +62,7 @@ export default {
     width: 1.75rem;
   }
   i:after {
-    content: "";
+    content: '';
     position: absolute;
     top: 0.5rem;
     left: 0.45rem;
@@ -74,14 +74,14 @@ export default {
     width: 0.75rem;
     height: 0.375rem;
   }
-  input[type="checkbox"]:checked + i {
+  input[type='checkbox']:checked + i {
     border-color: #66bb6a;
   }
-  input[type="checkbox"]:checked + i:after {
+  input[type='checkbox']:checked + i:after {
     opacity: 1;
     border-color: #66bb6a;
   }
-  input[type="checkbox"]:checked ~ .title {
+  input[type='checkbox']:checked ~ .title {
     text-decoration: line-through;
     color: #c8c8c8;
   }

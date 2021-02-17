@@ -5,8 +5,8 @@
         type="radio"
         name="filter"
         :value="option"
-        :checked="modelValue === option"
-        @change="$emit('update:modelValue', option)"
+        :checked="value === option"
+        @change="$emit('input', option)"
       />
       <span>{{ option }}</span>
     </label>
@@ -15,12 +15,12 @@
 
 <script>
 export default {
-  name: "Tab",
+  name: 'Tab',
   props: {
     options: Array,
-    modelValue: String
+    value: String
   }
-};
+}
 </script>
 
 <style lang="scss" module>
@@ -32,11 +32,11 @@ export default {
       margin: 0 0.5rem;
       padding: 0.25rem;
     }
-    input[type="radio"]:checked + span {
+    input[type='radio']:checked + span {
       padding: 0.2rem;
       border: 1px solid $border-color;
     }
-    input[type="radio"] {
+    input[type='radio'] {
       display: none;
     }
   }

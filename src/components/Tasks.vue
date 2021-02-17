@@ -12,20 +12,20 @@
 </template>
 
 <script>
-import Task from "./Task";
-import { mapGetters, mapMutations } from "vuex";
+import Task from './Task'
+import { mapGetters, mapMutations } from 'vuex'
 export default {
   components: {
     Task
   },
-  computed: mapGetters(["todosFiltered"]),
+  computed: mapGetters(['todosFiltered']),
   methods: {
-    ...mapMutations(["changeTaskStatus"]),
+    ...mapMutations(['changeTaskStatus']),
     setTask(id, value) {
-      this.changeTaskStatus({ id, value });
+      this.changeTaskStatus({ id, value })
     }
   }
-};
+}
 </script>
 
 <style lang="scss" module></style>

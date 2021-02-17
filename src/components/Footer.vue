@@ -2,31 +2,31 @@
   <div :class="$style.footer">
     <div>{{ remaining }} left</div>
     <Tab :options="filters" v-model="filter" />
-    <div :class="$style.clear" @click="clearCompleted">
+    <button :class="$style.clear" @click="clearCompleted">
       Clear completed
-    </div>
+    </button>
   </div>
 </template>
 
 <script>
-import Tab from "./Tab";
+import Tab from './Tab'
 
 export default {
   data() {
     return {
-      filters: ["All", "Active", "Completed"]
-    };
+      filters: ['All', 'Active', 'Completed']
+    }
   },
   computed: {
     remaining() {
-      return this.$store.getters.remaining;
+      return this.$store.getters.remaining
     },
     filter: {
       get() {
-        return this.$store.state.filter;
+        return this.$store.state.filter
       },
       set(value) {
-        this.$store.commit("setFilter", value);
+        this.$store.commit('setFilter', value)
       }
     }
   },
@@ -35,10 +35,10 @@ export default {
   },
   methods: {
     clearCompleted() {
-      this.$store.commit("clearCompleted");
+      this.$store.commit('clearCompleted')
     }
   }
-};
+}
 </script>
 
 <style lang="scss" module>
