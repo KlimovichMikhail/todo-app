@@ -1,4 +1,4 @@
-import { visit, getTodoApp, enterTodo,getTodoItems,getNewTodoInput } from '../support/index'
+import { visit, enterTodo, getTodoApp,getTodoItems,getNewTodoInput} from '../support/index'
 
 describe('Input form', () => {
   beforeEach(() => visit())
@@ -63,17 +63,19 @@ describe('UI', () => {
         .eq(1)
         .click();
       cy.get("#checkbox").should("not.be.visible"); 
-  
+      cy.get("#taskList span").should("have.length",2);
+    
       cy.get("#tabs>label")
         .eq(2)
         .click();
       cy.get("#checkbox").should("be.checked");
+      cy.get("#taskList span").should("have.length",1);
   
       cy.get("#tabs>label")
         .first()
-        .click();
+        .click()
       cy.get("#taskList span").should("have.length",3 );
-    });
+     })
 
     it('can add many items', () => {
       const N = 10
