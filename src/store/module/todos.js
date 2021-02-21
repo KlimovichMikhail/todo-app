@@ -20,9 +20,9 @@ export default {
     setFilter(state, filter) {
       state.filter = filter
     },
-    changeTaskStatus(state, id) {
-      state.todos = state.todos.map(task =>
-        task.id === id ? { ...task, completed: !task.completed } : task
+    changeTaskStatus(state, { id, value }) {
+      state.todos = state.todos.map(todo =>
+        todo.id === id ? { ...todo, completed: value } : todo
       )
       localStorage.setItem('todos', JSON.stringify(state.todos))
     },
@@ -35,11 +35,7 @@ export default {
       localStorage.setItem('todos', JSON.stringify(state.todos))
     }
   },
-  actions: {
-    getFromStorage(context) {
-      context.commit('getFromStorage')
-    }
-  },
+  actions: {},
 
   getters: {
     remaining(state) {

@@ -1,8 +1,12 @@
 <template>
-  <form :class="$style.input" @submit.prevent="send">
+  <form :class="$style.input" id="formEnter" v-on:keyup.enter="send">
     <input
+      id="inputText"
       type="text"
-      placeholder="What's needs to be done?  "
+      :class="$style.newTodo"
+      v-focus
+      placeholder="What's
+    needs to be done? "
       v-model="newTodo"
     />
   </form>
@@ -21,6 +25,13 @@ export default {
     send() {
       this.$store.commit('addTodo', this.newTodo)
       this.newTodo = ''
+    }
+  },
+  directives: {
+    focus: {
+      inserted: function(el) {
+        el.focus()
+      }
     }
   }
 }

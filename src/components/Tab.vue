@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.tabs">
+  <div :class="$style.tabs" id="tabs">
     <label :class="$style.tab" v-for="option in options" :key="option">
       <input
         type="radio"

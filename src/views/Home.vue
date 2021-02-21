@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :class="wrapper" id="todoapp">
     <Title />
     <div :class="$style.firstList">
       <Input />
@@ -12,10 +12,10 @@
 </template>
 
 <script>
-import Title from '@/components/Title.vue'
-import Input from '@/components/Input.vue'
-import Tasks from '@/components/Tasks.vue'
-import Footer from '@/components/Footer.vue'
+import Title from "@/components/Title.vue";
+import Input from "@/components/Input.vue";
+import Tasks from "@/components/Tasks.vue";
+import Footer from "@/components/Footer.vue";
 
 export default {
   components: {
@@ -25,15 +25,15 @@ export default {
     Footer
   },
   mounted() {
-    this.$store.commit('getFromStorage')
+    this.$store.commit("getFromStorage");
   }
-}
+};
 </script>
 
 <style lang="scss" module>
 body {
   padding: 3rem 0.5rem;
-  font-family: 'Helvetica Neue';
+  font-family: "Helvetica Neue";
   font-weight: 200;
   font-size: 16px;
   background-color: $main-color;
@@ -43,6 +43,14 @@ body {
   align-items: center;
   justify-content: center;
 
+  .wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
   .firstList {
     display: flex;
     flex-direction: column;

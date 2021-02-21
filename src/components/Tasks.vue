@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :class="$style.content">
     <Task
       v-for="todo of todosFiltered"
       :key="todo.id"
@@ -28,4 +28,9 @@ export default {
 }
 </script>
 
-<style lang="scss" module></style>
+<style lang="scss" module>
+.content {
+  flex: 1;
+  overflow-y: auto;
+}
+</style>
