@@ -1,15 +1,16 @@
 <template>
   <div>
-    <label :class="$style.task">
+    <label :class="$style.task" id="taskList">
       <input
+      id="checkbox"
         type="checkbox"
         :checked="completed"
         @change="e => $emit('change', e)"
-        :id="id"
+    
       />
       <i></i>
-      <span :class="$style.title">{{ title }}</span>
-      <button :class="$style.remove" @click="removeTodo(id)">
+      <span :class="$style.title" id="text">{{ title }}</span>
+      <button :class="$style.remove" id="destroy" @click="removeTodo(id)">
         &times;
       </button>
     </label>
